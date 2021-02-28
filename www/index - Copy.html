@@ -10,25 +10,23 @@
     </head>
     <body>
         <script>
-          // function onDeviceReady() {
-          //   if (navigator.connection.type == Connection.NONE) {
-          //     navigator.notification.alert('Devam etmek için Internet bağlantısı gereklidir.');
-          //   } else {
-          //     var ref = cordova.InAppBrowser.open('https://tr216.com/?mobileapp=1', '_self', 'location=no,zoom=no;');
-          //     ref.addEventListener('exit', function(){
-          //       navigator.app.exitApp();
-          //     });
-          //   }
-          // }
-          document.addEventListener("deviceready", ()=>{
-            console.log('hooop haziriz');
-          }, false);
+          function onDeviceReady() {
+            if (navigator.connection.type == Connection.NONE) {
+              navigator.notification.alert('Devam etmek için Internet bağlantısı gereklidir.');
+            } else {
+              var ref = cordova.InAppBrowser.open('https://tr216.com/?mobileapp=1', '_self', 'location=no,zoom=no;');
+              ref.addEventListener('exit', function(){
+                navigator.app.exitApp();
+              });
+            }
+          }
+          document.addEventListener("deviceready", onDeviceReady, false);
         </script>
         <div>
             <center>
                 <img src="img/tr216-logo.png" style="width: 100%;">
                 <h1>TR216' ya Hoş Geldiniz</h1>
-                <div id="uygulama" class="blink">
+                <div id="deviceready" class="blink">
                     <p class="event listening">Bağlanıyor</p>
                     <p class="event received">Bağlantı kuruldu</p>
                 </div>
